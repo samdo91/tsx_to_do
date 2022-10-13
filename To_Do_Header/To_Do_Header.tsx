@@ -6,6 +6,9 @@ export const ToDoHeader = (props: any) => {
     const [todo, setTodo] = useState<string>()
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        if(!todo) {
+            return
+        }
         setList(
           [...list, {
             value: todo,

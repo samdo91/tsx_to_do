@@ -6,10 +6,11 @@ interface iToll {
 
     allSelector: () => void
     SelectorDelete: () => void
+    isAllSelectors: () => boolean
     
 }
 export const ToDoToll =(props:iToll) =>{
-    const{allSelector, SelectorDelete} =props
+    const{allSelector, SelectorDelete,isAllSelectors} =props
 
     const handleAllSelector =() =>{
         allSelector()     
@@ -19,7 +20,8 @@ export const ToDoToll =(props:iToll) =>{
    }
 
     return<>
-    <button onClick={handleAllSelector}>전부선택</button>
+    {isAllSelectors() ? <button onClick={handleAllSelector}>전체해제</button> :<button onClick={handleAllSelector}>전부선택</button>}
+    
     <button onClick={handleSelectorDelete}>선택삭제</button>
     </>
 }

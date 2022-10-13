@@ -36,9 +36,12 @@ export const ToDoList = () => {
       })
       setList(newList)
    }
+const isAllSelectors=() => {
+   return list.every(list=> list.selector)
+}
 
    const allSelector = () => {
-const isAllSelector= list.every(list=> list.selector)
+const isAllSelector= isAllSelectors()
       const newList = list.map((list) => {
 
          return {
@@ -60,7 +63,7 @@ const isAllSelector= list.every(list=> list.selector)
    return (<div>
       <h1> {` ${ list.length} 만큼! 할 일이 너무 많아!!`} </h1>
       <ToDoHeader list={list} setList={setList} />
-      <ToDoToll allSelector={allSelector} SelectorDelete ={SelectorDelete} />
+      <ToDoToll allSelector={allSelector} SelectorDelete ={SelectorDelete}  isAllSelectors={isAllSelectors}/>
       <ToDoBoard list={list} selectorBoolean={selectorBoolean} itemDelete={itemDelete} />
 
 
