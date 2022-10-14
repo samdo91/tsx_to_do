@@ -1,26 +1,42 @@
-import React, {useReducer } from "react";
-import { TodoReducer } from "./TodoReducer";
+import React from "react";
+import { useToDo, useToDoDispatch, useToDolist, useToDolistDispatch } from "../store/ToDoContext";
 
 
-export const ToDoHeader = (props: any) => {
-    const { addList } = props
-    const [todo, todoDispatch ]= useReducer(TodoReducer ,{todo:""})
-    // const [todo, setTodo] = useState<string>()
+
+export const ToDoHeader = () => {
+
+    const todolist = useToDolist()
+    const todoLIstDispatch = useToDolistDispatch()
+    const todoDispatch= useToDoDispatch()
+    const todo= useToDo()
+    console.log("todo",todo)
+
+
+
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if(!todo.todo) {
+        if (!todo.todo) {
             return
         }
-        addList(todo.todo)
-         todoDispatch({
-            type:"clear" })
-         }
+        todoLIstDispatch({
+            type: "add",
+            payload: {
+               todo: todo.todo
+            }
+         })
+        todoDispatch({
+            type: "clear"
+        })
+        console.log(todolist)
+    }
 
     const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         todoDispatch({
             type: "change",
             payload: e.target.value
-        })}
+        })
+    }
 
     return (<div>
         <form onSubmit={handleSubmit}>

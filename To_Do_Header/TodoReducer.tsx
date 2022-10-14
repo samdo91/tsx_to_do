@@ -1,14 +1,5 @@
+import { todoReducerAction, todoReducerState } from "../store/ToDoContext"
 
-type todoReducerState = {
-    todo: string
-}
-
-type todoReducerAction = {
-    type: "change"
-    payload: string
-} | {
-    type: "clear"
-}
 
 
 export const TodoReducer = (state: todoReducerState, action: todoReducerAction) => {

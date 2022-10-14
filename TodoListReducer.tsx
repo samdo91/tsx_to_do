@@ -1,39 +1,10 @@
 
-import { iTodo } from "./To_Do_List"
+import { tAction, tState } from "./store/ToDoContext"
 
-
-
-type tState = {
-  list: iTodo[]
-
-}
 
 // 리스트 업데이트, 단일 삭체, 토글, 모두 선택, 선택 삭제 
 //  add, remove, checked , allchecked , allremove
-type tAction = {
-  type: "remove",
-  payload:{
-    id:number
-  }
-} | {
-  type: "checked",
-  payload:{
-    id: number
-  }
-} | {
-  type: "allChecked",
-payload:{
-  selector:boolean
-}
-} | {
 
-  type: "allRemove"
-}|{
- type: "add",
- payload:{
-  todo:string
- }
-}
 
 
 
@@ -75,7 +46,7 @@ export const TodoListReducer = (state: tState, action: tAction) => {
   return {
     list: state.list.concat(
       { todo: action.payload.todo,
-        id:Date.now() + Math.random() ,
+        id:Date.now() + Math.random(),
         selector: false
 
       }
@@ -84,36 +55,3 @@ export const TodoListReducer = (state: tState, action: tAction) => {
 
   }
 }
-
-// interface tState {
-//   list: iTodo[]
-// }
-// // //  add, remove, checked , allchecked , allremove
-// type tAction = {
-//   type: "remove",
-//   payload: {
-//     id: number
-//   }
-// } | {
-//   type: "checked"
-//   payload: {
-//     id: number
-//   }
-// } | {
-//   type: "allchecked"
-//   payload: {
-//     if: number
-//   }
-// } | {
-// type: "allremove"
-
-// }
-
-// export const TodoListReducer = (state: tState, action: tAction) => {
-//   switch (action.type) {
-//     case "remove":
-//       return{ list:  state.list.filter((list) => {
-//                 return list.id !== action.payload.id
-// })}
-
-// }

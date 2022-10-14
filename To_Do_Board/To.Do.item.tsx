@@ -2,32 +2,36 @@ import React from "react";
 import { FcOk } from "react-icons/fc";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
+import { useToDolistDispatch } from "../store/ToDoContext";
+
 
 
 export const ToDoItem = (props: any) => {
+  
+const todoLIstDispatch = useToDolistDispatch()
 
-    const { selectorBoolean, value, id, selector, itemDelete } = props
+  
 
+    const { value, id, selector } = props
 
-
-
-    // const handleselector = (e: React.MouseEvent<SVGElement>) => {
-    //     if (selector === true) {
-    //         setSelector(false)
-
-    //     }
-    //     if (selector === false) {
-    //         setSelector(true)
-
-    //     }
-    // }
 
     const handleselector = () => {
-        selectorBoolean(id)
+        todoLIstDispatch({
+            type: "checked",
+            payload: {
+               id: id
+            }
+         })
 
     }
     const handledelete = () => {
-        itemDelete(id)
+      
+        todoLIstDispatch({
+            type: "remove",
+            payload: {
+               id: id
+            }
+         })
 
     }
 

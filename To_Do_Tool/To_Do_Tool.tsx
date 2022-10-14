@@ -1,22 +1,31 @@
 import React from "react";
-import { iTodo } from "../To_Do_List";
+import { useToDolist, useToDolistDispatch } from "../store/ToDoContext";
 
 
-interface iToll {
 
-    allSelector: () => void
-    SelectorDelete: () => void
-    isAllSelectors: () => boolean
+export const ToDoToll =() =>{
+    const list = useToDolist()
+    const todoLIstDispatch = useToDolistDispatch()
     
-}
-export const ToDoToll =(props:iToll) =>{
-    const{allSelector, SelectorDelete,isAllSelectors} =props
+
+    const isAllSelectors = () => {
+        return list.list.every(list => list.selector)
+     }
+  
 
     const handleAllSelector =() =>{
-        allSelector()     
+        const AllSelectors = isAllSelectors()
+        todoLIstDispatch({
+           type: "allChecked",
+           payload: {
+              selector: AllSelectors
+           }
+        })
     } 
    const handleSelectorDelete =() =>{
-    SelectorDelete()
+    todoLIstDispatch({
+        type: "allRemove"
+     })
    }
 
     return<>
