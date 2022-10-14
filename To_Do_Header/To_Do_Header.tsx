@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import { iTodo } from "../To_Do_List";
+import React, {useReducer } from "react";
+import { TodoReducer } from "./TodoReducer";
+
 
 export const ToDoHeader = (props: any) => {
-    const { list, setList } = props
-    const [todo, setTodo] = useState<string>()
+    const { addList } = props
+    const [todo, todoDispatch ]= useReducer(TodoReducer ,{todo:""})
+    // const [todo, setTodo] = useState<string>()
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if(!todo) {
+        if(!todo.todo) {
             return
         }
-        setList(
-          [...list, {
-            value: todo,
-            id:Date.now() + Math.random() ,
-            selector: false
-         }])
-       setTodo("")
-    }
+        addList(todo.todo)
+         todoDispatch({
+            type:"clear" })
+         }
 
     const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTodo(e.target.value)
-    }
+        todoDispatch({
+            type: "change",
+            payload: e.target.value
+        })}
 
     return (<div>
         <form onSubmit={handleSubmit}>
-            <input type="text" value={todo} placeholder="여기에 할일을 적어주세요" onChange={handlerChange}></input>
+            <input type="text" value={todo.todo} placeholder="여기에 할일을 적어주세요" onChange={handlerChange}></input>
             <button type="submit"> 할일!</button>
         </form>
 

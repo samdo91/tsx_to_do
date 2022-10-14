@@ -15,6 +15,6 @@ export const ToDoBoard = (props: iBoardProps) => {
 
     return <ul>
         {/* {list.map((item)=> <ToDoItem item={item}></ToDoItem>)} */}
-        {list.map((item) => <li key={item.id}><ToDoItem id={item.id} key={item.id} value={item.value} selector={item.selector} selectorBoolean={selectorBoolean} itemDelete ={itemDelete}/></li>)}
+        {list.map((item) => <li key={item.id}><ToDoItem id={item.id} key={item.id} value={item.todo} selector={item.selector} selectorBoolean={selectorBoolean} itemDelete ={itemDelete}/></li>)}
     </ul>
 }
