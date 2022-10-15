@@ -1,5 +1,5 @@
 
-import { tAction, tState } from "./store/ToDoContext"
+import { tAction, tState } from "./ToDoContext"
 
 
 // 리스트 업데이트, 단일 삭체, 토글, 모두 선택, 선택 삭제 

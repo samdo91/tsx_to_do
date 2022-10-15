@@ -9,7 +9,7 @@ export const ToDoHeader = () => {
     const todoLIstDispatch = useToDolistDispatch()
     const todoDispatch= useToDoDispatch()
     const todo= useToDo()
-    console.log("todo",todo)
+
 
 
 
@@ -28,7 +28,7 @@ export const ToDoHeader = () => {
         todoDispatch({
             type: "clear"
         })
-        console.log(todolist)
+     
     }
 
     const handlerChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,7 +41,7 @@ export const ToDoHeader = () => {
     return (<div>
         <form onSubmit={handleSubmit}>
             <input type="text" value={todo.todo} placeholder="여기에 할일을 적어주세요" onChange={handlerChange}></input>
-            <button type="submit"> 할일!</button>
+            <button type="submit"> 할 일!</button>
         </form>
 
     </div>)

@@ -1,6 +1,6 @@
 import React, { ReactNode, useContext, createContext, useReducer, Dispatch } from "react";
-import { TodoListReducer } from "../TodoListReducer";
-import { TodoReducer } from "../To_Do_Header/TodoReducer";
+import { TodoListReducer } from "./TodoListReducer";
+import { TodoReducer } from "./TodoReducer";
 import { iTodo } from "../To_Do_List";
 interface iToDoContext {
     children: ReactNode
