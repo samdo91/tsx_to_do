@@ -2,6 +2,7 @@ import React, { ReactNode, useContext, createContext, useReducer, Dispatch } fro
 import { TodoListReducer } from "./TodoListReducer";
 import { TodoReducer } from "./TodoReducer";
 import { iTodo } from "../To_Do_List";
+import { loadToDo } from "./ToDoStorage";
 interface iToDoContext {
     children: ReactNode
 }
@@ -63,7 +64,7 @@ const toDoDispatctContext = createContext<Dispatch<todoReducerAction> | null>(nu
 
 const ToDoContextProvider = (props: iToDoContext) => {
 
-    const [list, todoLIstDispatch] = useReducer(TodoListReducer, { list: [] })
+    const [list, todoLIstDispatch] = useReducer(TodoListReducer, { list: loadToDo()})
     const [todo, todoDispatch] = useReducer(TodoReducer, { todo: "" })
 
     return (
